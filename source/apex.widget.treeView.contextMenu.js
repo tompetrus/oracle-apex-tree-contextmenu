@@ -1,6 +1,16 @@
-//apex.jQuery("#myTree div[role='tree']").treeView("contextMenuAction", function(e){console.log("contextmenu action triggered with event = ", e);})
+/**
+ * @author Tom Petrus
+ * @fileoverview Extends the apex treeView widget. A new function "setContextMenu" will be added for availability on the standard widget. It is used to add a contextmenu to the tree by providing an apex.widget.menu options object to the function and will hook into tree functionality.  
+ * Be aware that the extend has to occur before a tree instance is initialized, otherwise that tree instance will not have this extra available.
+ */
 ( function ( $, undefined ) {
   $.widget("apex.treeView", $.apex.treeView, {
+    /**
+     * hooks an apex.menu into the tree, similar to how the tree widget does it on create. This plugin lifts the restriction of only being able to hook a menu up during creation of an instance. 
+     * @param pOptions an object containing the options for the contextmenu
+     * @param pOptions.contextMenu the apex.menu options object
+     * @param pOptions.contextMenuId an optional id to give to the menu instance
+     */
     setContextMenu: function  ( pOptions ) {
       //var inst = apex.jQuery(pTreeSelector + " div[role='tree']").data("apex-treeView");
       var self = this;
